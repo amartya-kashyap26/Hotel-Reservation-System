@@ -1,0 +1,23 @@
+<h2>Hotel Reservation System</h2>
+
+<input type="number" [(ngModel)]="roomCount" min="1" max="5" />
+
+<button (click)="bookRooms(roomCount)">Book</button>
+<button (click)="randomizeRooms()">Random</button>
+<button (click)="resetRooms()">Reset</button>
+
+<hr />
+
+<div *ngFor="let floor of [].constructor(10); let i = index">
+  <h3>Floor {{ i + 1 }}</h3>
+
+  <div style="display: flex; flex-wrap: wrap">
+    <div
+      *ngFor="let room of rooms.filter(r => r.floor === i+1)"
+      [style.background]="room.isBooked ? 'red' : 'lightgreen'"
+      style="margin: 5px; padding: 10px; width: 60px; height: 10px; text-align: center"
+    >
+      {{ room.roomNumber }}
+    </div>
+  </div>
+</div>
